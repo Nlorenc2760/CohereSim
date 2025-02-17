@@ -5,3 +5,5 @@ tools/extractor
 traces/
 simulate_cache
 results.csv
+tools/gem5/
+tools/parsec-benchmark/
