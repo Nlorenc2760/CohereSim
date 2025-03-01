@@ -11,7 +11,7 @@ public:
 
     /// @brief Construct a new MOSI coherence protocol
     /// @param cache The parent cache
-    MOSI(Cache& cache) : CoherenceProtocol(cache) {}
+    MOSI(CacheABC& cache) : CoherenceProtocol(cache) {}
 
     /// @brief Receive a PrRd message
     /// @param line The cache line accessed (non-null)
