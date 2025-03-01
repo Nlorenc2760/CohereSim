@@ -72,6 +72,7 @@ bool MSIUpgr::BusUpgr(cache_line* line) {
         line->state = I;
     case I:
         return false;
+    case M:
     default:
         STATE_ERR;
         return false;

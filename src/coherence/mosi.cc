@@ -21,7 +21,7 @@ void MOSI::PrRd(cache_line* line) {
 }
 
 void MOSI::PrWr(cache_line* line) {
-    /*Write-No-Allocate* if (line) */ switch (line->state) {
+    switch (line->state) {
     case M:
         break;
     case O:
@@ -43,7 +43,6 @@ bool MOSI::BusRd(cache_line* line) {
     switch (line->state) {
     case M:
         line->state = O;
-        return true;
     case O:
         return true;
     case S:
@@ -63,7 +62,6 @@ bool MOSI::BusRdX(cache_line* line) {
         return true;
     case S:
         line->state = I;
-        return false;
     case I:
         return false;
     default:
@@ -74,15 +72,12 @@ bool MOSI::BusRdX(cache_line* line) {
 
 bool MOSI::BusUpgr(cache_line* line) {
     switch (line->state) {
-    case M:
-        STATE_ERR;
-        return false;
     case O:
     case S:
         line->state = I;
-        return false;
     case I:
         return false;
+    case M:
     default:
         STATE_ERR;
         return false;
