@@ -10,6 +10,7 @@ void MOSI::PrRd(cache_line* line) {
     case M:
     case O:
     case S:
+        break;
     case I:
         cache.issueBusMsg(BusRead);
         line->state = S;
